@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header, { Title } from "./components/Header";
 import Body from "./components/Body";
@@ -16,15 +16,26 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ProfileClass from "./components/ProfileClass";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 
-const Instamart = lazy(()=>import("./components/Instamart"))
-const AppLayout = () => (
-  <>
-    <Header />
-    <Outlet />
-    <Footer />
-  </>
-);
+const Instamart = lazy(() => import("./components/Instamart"));
+
+const AppLayout = () => {
+
+  // Overwriting Context
+  const [user, setUser] = useState({
+    name: "Sujal Malhotra",
+    email: "workwithsujal04@gmail.com",
+    class:"UCA"
+  });
+  return (
+    <UserContext.Provider value={{user:user}}>
+      <Header />
+      <Outlet />
+      <Footer />
+    </UserContext.Provider>
+  );
+};
 
 const router = createBrowserRouter([
   {
@@ -57,10 +68,11 @@ const router = createBrowserRouter([
       },
       {
         path: "instamart",
-        element: 
-        (<Suspense fallback={<Shimmer/>}>
+        element: (
+          <Suspense fallback={<Shimmer />}>
             <Instamart />,
-        </Suspense>)
+          </Suspense>
+        ),
       },
     ],
   },

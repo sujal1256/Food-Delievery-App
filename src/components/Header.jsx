@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
-export const Title = () => (
+import UserContext from "../utils/UserContext";
+export const Title = () => {
+    const {user} = useContext(UserContext);
+
+    return(
     <Link to="/">
       <img
         className="h-14"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRq_LmiEG7PEV3p9MGjSYDxsn1BzvEy5fEdg&s"
       />
     </Link>
-);
+)};
 
   
 const Header = () => {
