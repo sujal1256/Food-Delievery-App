@@ -45,7 +45,7 @@ const MenuCard = ({ card }) => {
             />
           </svg>}
         </div>
-        <div className={`${closed?"hidden":null}`}>
+        <div className={` ${closed?"hidden":null}`}>
             {itemCards.map((e) => { 
                 return <FoodCard {...e} key={e.id} />;
             })}
