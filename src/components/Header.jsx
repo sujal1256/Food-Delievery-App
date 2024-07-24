@@ -1,11 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 import { CART } from "../constants";
 export const Title = () => {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
 
   return (
     <Link to="/">

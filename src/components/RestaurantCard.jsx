@@ -1,11 +1,15 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { IMAGE_URL } from "../constants";
 import UserContext from "../utils/UserContext";
 
 const ResturantCard = ({info}) => {
   
   const { name, cloudinaryImageId, cuisines, avgRating} = info;
-  const {user} = useContext(UserContext);
+
+
+  // const {user} = useContext(UserContext);
+
+  
     return (
       <div className="">
         <img
@@ -17,8 +21,10 @@ const ResturantCard = ({info}) => {
           <h2 className="text-2xl w-[300%]">{name}</h2>
           <h3 className="text-slate-400 font-normal text-md">{cuisines.slice(0,3).join(', ')}</h3>
           <h3 className="text-slate-400 font-normal text-md">{avgRating}⭐</h3>
+
           {/* <h3 className="rest-place">{place}</h3> */}
-          <p className="font-bold text-sm">{user.name} - {user.email}</p>
+          {/* User Context */}
+          {/* <p className="font-bold text-sm">{user.name} - {user.email}</p> */}
         </div>
       </div>
     );
