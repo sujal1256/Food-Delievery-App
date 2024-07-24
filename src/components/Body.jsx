@@ -62,7 +62,7 @@ const Body = () => {
       {filteredRestaurants.length === 0 ? (
         <NoResults />
       ) : (
-        <div className="restaurant-cards bg-slate-50 flex flex-wrap gap-24 m-10 w-auto">
+        <div className="restaurant-cards bg-slate-50 flex flex-wrap gap-12 m-10 w-auto justify-around">
           {filteredRestaurants.map((e) => {
             return (
               <Link

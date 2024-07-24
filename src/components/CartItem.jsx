@@ -1,19 +1,19 @@
 import { useDispatch } from "react-redux";
 import { IMAGE_URL, STAR } from "../constants";
-import { addItem } from "../utils/cartSlice";
+import { clearCart } from "../utils/cartSlice";
 
-const FoodCard = ( { name, imageId, price, isVeg, ratings,id }) => {
-  const passToStore = { name, imageId, price, isVeg, ratings,id };
+const CartItem = ( { name, imageId, price, isVeg, ratings,id }) => {
   const src = isVeg
     ? "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Veg_symbol.svg/1200px-Veg_symbol.svg.png"
     : "https://foodsafetyhelpline.com/wp-content/uploads/2013/05/non-veg-300x259.jpg";
 
   const rating = ratings?.aggregatedRating?.rating;
   const dispatch = useDispatch();
-
-  const handleAddItem =(food)=>{
-        dispatch(addItem(food));
+  
+  const handleDelete = () =>{
+    dispatch(clearCart());
   }
+
   return (
     <>
       <div className=" bg-white shadow-sm rounded-lg flex px-10 justify-between h-32 items-center my-2 relative py-20">
@@ -38,10 +38,10 @@ const FoodCard = ( { name, imageId, price, isVeg, ratings,id }) => {
             />
           )}
         </div>
-        <button className="absolute bottom-2 right-16 bg-orange-500 px-2 rounded-md hover:bg-orange-300" onClick={()=>handleAddItem(passToStore)}>Add Item</button>
+        <button className="absolute bottom-2 right-16 bg-orange-500 px-2 rounded-md hover:bg-orange-300" onClick={()=>handleDelete()}>Delete Item</button>
       </div>
     </>
   );
 };
 
-export default FoodCard;
+export default CartItem;
