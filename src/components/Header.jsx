@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
-import { useSelector } from "react-redux";
+import { useSelector, Provider } from "react-redux";
 import { CART } from "../constants";
 export const Title = () => {
   // const { user } = useContext(UserContext);
@@ -12,6 +12,7 @@ export const Title = () => {
       <img
         className="h-14"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRq_LmiEG7PEV3p9MGjSYDxsn1BzvEy5fEdg&s"
+        data-testid="logo"
       />
     </Link>
   );
@@ -21,7 +22,7 @@ const Header = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(...cartItems);
+  // console.log(...cartItems);
 
   return (
     <div className="flex justify-between items-center bg-white px-[20px] py-[10px]">
@@ -42,7 +43,7 @@ const Header = () => {
             <li>Instamart</li>
           </Link>
           <li>
-            <h1>{isOnline ? "✅" : "🔴"}</h1>
+            <h1 data-testid = "online-status">{isOnline ? "✅" : "🔴"}</h1>
           </li>
         </ul>
       </div>
@@ -57,7 +58,7 @@ const Header = () => {
         )}
         <Link to="/cart" className="flex w-[30%] justify-between">
           <span>{CART}</span>
-          <span>{cartItems.length}</span>
+          <span data-testid="cart">{cartItems.length}</span>
         </Link>
       </div>
     </div>

@@ -32,11 +32,11 @@ const AppLayout = () => {
   });
   return (
     <Provider store={store}>
-      <UserContext.Provider value={{ user: user }}>
+      {/* <UserContext.Provider value={{ user: user }}> */}
         <Header />
         <Outlet />
         <Footer />
-      </UserContext.Provider>
+      {/* </UserContext.Provider> */}
     </Provider>
   );
 };

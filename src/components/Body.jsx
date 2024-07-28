@@ -24,7 +24,8 @@ const Body = () => {
 
       setFilteredRestaurants(rests);
       setAllRestaurants(rests);
-      console.log(rests);
+      console.log(data);
+      
     })();
   }, []);
   
@@ -45,12 +46,14 @@ const Body = () => {
           type="text"
           className="search-bar"
           value={searchText}
+          data-testid = "search-input"
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
           className="search-btn"
+          data-testid = "search-btn"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
@@ -62,7 +65,7 @@ const Body = () => {
       {filteredRestaurants.length === 0 ? (
         <NoResults />
       ) : (
-        <div className="restaurant-cards bg-slate-50 flex flex-wrap gap-12 m-10 w-auto justify-around">
+        <div className="restaurant-cards bg-slate-50 flex flex-wrap gap-12 m-10 w-auto justify-around" data-testid="res-data">
           {filteredRestaurants.map((e) => {
             return (
               <Link
